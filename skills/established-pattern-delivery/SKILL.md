@@ -1,3 +1,8 @@
+---
+name: established-pattern-delivery
+description: Use when product direction, technical approach, and interface shape are known enough to implement - delivers low-uncertainty work through focused tasks, tests, checks, and review handling.
+---
+
 # Established-Pattern Delivery Skill
 
 ## Purpose
@@ -30,6 +35,13 @@ Examples:
 
 If there is no real existing pattern, route back to product, technical, or interface spike.
 
+Useful checkpoint shape:
+
+> Pattern: Add another settings panel following `AccountSettingsPanel` with route-level loader, form action, Zod validation, and component-local pending state.
+> Scope: UI component, route action, targeted validation tests, and one browser smoke.
+> Not changing: persistence schema, public API shape, or navigation model.
+> Verification between tasks: targeted test after validation, curl/action smoke after route wiring, screenshot after UI integration.
+
 ## Task Breakdown
 
 Break work into area-focused tasks. Do not force every task to be a complete vertical slice.
@@ -59,7 +71,7 @@ Use:
 - component sketches
 - browser screenshots after implementation
 
-When a grill-me or adversarial-review skill is available, use it before finalizing significant UI shape.
+When `superpowers:brainstorming`, `grill-me`, or adversarial-review skill is available, use one of them before finalizing significant UI shape. Choose the one that best fits the user's installed skills and the shape of the work.
 
 ## TDD And Tests
 
@@ -72,6 +84,8 @@ Use TDD for full implementation where practical:
 - Run broader verification before final completion.
 
 Do not write tests that only prove implementation details while missing the product behavior.
+
+If TDD is not practical for a task, state why and choose the smallest verification loop that can catch the real risk.
 
 ## Manual And Integration Checks Between Tasks
 
@@ -87,6 +101,8 @@ Examples:
 
 Manual checks are not a substitute for tests, but they often reveal missing assumptions earlier than tests.
 
+If no manual or integration check applies, state why before moving to final verification.
+
 ## Interface And Schema Changes
 
 If implementation reveals a need for new or changed API/schema/domain concepts:
@@ -95,7 +111,7 @@ If implementation reveals a need for new or changed API/schema/domain concepts:
 - update the interface/schema deviation ledger
 - route back to interface design if the change is high risk or changes product semantics
 
-Do not silently introduce new persisted fields, public contracts, source-of-truth models, or domain entities while “just implementing.”
+Do not silently introduce new persisted fields, public contracts, source-of-truth models, or domain entities while "just implementing."
 
 ## Exit Criteria
 

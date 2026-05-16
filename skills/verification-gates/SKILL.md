@@ -1,3 +1,8 @@
+---
+name: verification-gates
+description: Use before claiming work is complete, fixed, or passing - verifies build, integration, product, visual, safety, and regression evidence beyond automated tests.
+---
+
 # Verification Gates Skill
 
 ## Purpose
@@ -97,6 +102,19 @@ Examples:
 - manual inspection for early product demos
 
 For agentic/product features, curl/e2e/browser/manual checks often find bugs that unit tests did not anticipate. Treat them as required evidence when the behavior is user-visible or integration-heavy.
+
+Useful verification report shape:
+
+| Layer | Evidence | Result |
+| --- | --- | --- |
+| Build | `npm run verify` | Pass |
+| Integration | `curl POST /bulk-invites` plus DB query | Pass: three pending invites persisted |
+| Product | Approved golden workflow walkthrough | Pass: invalid rows visible, duplicates skipped |
+| Visual | Browser screenshot of preview and pending states | Pass |
+| Safety | Path traversal fixture rejected | Pass |
+| Regression | Retry duplicate test | Pass |
+
+If a layer is skipped, state why and what risk remains. For example, "Visual verification skipped because this change only touches a CLI parser; remaining risk is covered by command-output snapshots."
 
 ## Golden Workflow Verification
 

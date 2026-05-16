@@ -1,68 +1,96 @@
 # Reality Check
 
-Reality Check is a plugin-style set of skills for planning, spiking, implementing, reviewing, and verifying features without losing the user's intended product outcome.
+Reality Check is a multi-skill collection for AI coding agents. It helps agents plan, spike, implement, review, and verify features without drifting away from the user's intended product outcome.
 
 Core principle:
 
 > Prove direction before polishing implementation. Prove product behavior before declaring success.
 
-## Files
+## Install
 
-- `SKILL.md` — top-level orchestrator/router
-- `skills/product-alignment/SKILL.md`
-- `skills/technical-risk-spike/SKILL.md`
-- `skills/interface-design-spike/SKILL.md`
-- `skills/implementation-demo-spike/SKILL.md`
-- `skills/established-pattern-delivery/SKILL.md`
-- `skills/review-triage/SKILL.md`
-- `skills/verification-gates/SKILL.md`
-- `skills/stop-and-replan/SKILL.md`
-- `scripts/init-git-repo.sh` — optional helper to initialize this folder as a Git repo
-- `scripts/create-github-repo.sh` — optional helper to create/push a GitHub repo with `gh`
-
-## Create A Git Repo
-
-From this folder:
+List the skills in this repository:
 
 ```bash
-./scripts/init-git-repo.sh
+npx skills add dorav/reality-check --list
 ```
 
-Or manually:
+Install all skills:
 
 ```bash
-git init
-git add .
-git commit -m "Initial Reality Check skill plugin"
+npx skills add dorav/reality-check --all
 ```
 
-Create and push a GitHub repo:
+Install a specific skill:
 
 ```bash
-gh repo create dorav/reality-check \
-  --private \
-  --source=. \
-  --remote=origin \
-  --push
+npx skills add dorav/reality-check --skill using-reality-check
+npx skills add dorav/reality-check --skill verification-gates
 ```
 
-## Install Options
-
-Clone into another project:
+Install from a local checkout:
 
 ```bash
-mkdir -p .agents/plugins
-git clone git@github.com:dorav/reality-check.git .agents/plugins/reality-check
+npx skills add .
 ```
 
-Add as a submodule:
+## Available Skills
+
+### using-reality-check
+
+Root entry skill and top-level orchestrator for deciding when and how to use Reality Check before planning, coding, patching review feedback, redesigning, debugging, or declaring work complete.
+
+### product-alignment
+
+Aligns on the user outcome before implementation by drafting golden workflows, clarifying ambiguous terms, identifying non-goals, and defining what would make the feature fail even if tests pass.
+
+### technical-risk-spike
+
+Reduces uncertainty around risky technology, runtime behavior, SDKs, permissions, generated output, integrations, scaling, security, and deployment assumptions.
+
+### interface-design-spike
+
+Makes system shape visible before implementation with diagrams and code-level contracts for APIs, schemas, domain concepts, agent tools, UI contracts, events, and source-of-truth boundaries.
+
+### implementation-demo-spike
+
+Proves the intended happy path through the major moving parts before investing in production hardening, broad regression tests, or polish.
+
+### established-pattern-delivery
+
+Guides full implementation once the product direction, technical approach, and interface shape are sufficiently known or already follow an established codebase pattern.
+
+### review-triage
+
+Classifies review comments, automated reviewer notes, failed tests, and bug-fix loops before patching so fixes preserve product intent and address the right class of risk.
+
+### verification-gates
+
+Checks that build, integration, product, visual, regression, and deployment verification are complete before calling a feature done.
+
+### stop-and-replan
+
+Stops patching when evidence shows the current approach is wrong, unstable, or hardening the wrong design, then routes back to the right planning or spike path.
+
+## Skill Structure
+
+This repository follows the Agent Skills format used by `vercel-labs/skills`:
+
+- `skills/using-reality-check/SKILL.md` - root entry skill and top-level orchestrator
+- `skills/<skill-name>/SKILL.md` - independently discoverable phase skills
+- `scripts/` - optional repository helper scripts
+
+Every skill lives under `skills/` and includes YAML frontmatter with `name` and `description`.
+
+## Verify
+
+Run the local validation check:
 
 ```bash
-git submodule add git@github.com:dorav/reality-check.git .agents/plugins/reality-check
+npm run verify
 ```
 
-Install by Git URL with npm-compatible package managers:
+If you have network access and want to smoke-test the upstream installer:
 
 ```bash
-npm install git+ssh://git@github.com/dorav/reality-check.git
+npx skills add . --list
 ```

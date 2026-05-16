@@ -1,3 +1,8 @@
+---
+name: interface-design-spike
+description: Use before adding or changing APIs, schemas, service boundaries, agent tools, events, UI contracts, domain concepts, or source-of-truth decisions - makes system shape explicit before implementation.
+---
+
 # Interface Design Spike Skill
 
 ## Purpose
@@ -32,6 +37,15 @@ Show both:
 2. Actual code-level contracts
 
 The goal is to make interface decisions visible before they disappear into implementation.
+
+Useful checkpoint shape:
+
+> Diagram: UI -> API route -> invite service -> invite store -> email adapter.
+> Contracts shown: request body, response body, service interface, persisted invite row.
+> Stable: public API route and persisted invite status values.
+> Provisional: email adapter event payloads until the provider spike is complete.
+> Source of truth: database invite rows own pending/sent/failed status; UI state is only a projection.
+> Risk to approve: partial success creates pending invites for valid rows even when invalid rows exist.
 
 ## Diagrams
 

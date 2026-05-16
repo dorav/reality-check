@@ -25,8 +25,7 @@
   },
   "files": [
     "README.md",
-    "skills",
-    "scripts"
+    "skills"
   ],
   "devDependencies": {
     "gray-matter": "^4.0.3"

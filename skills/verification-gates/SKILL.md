@@ -1,3 +1,8 @@
+---
+name: verification-gates
+description: Prove a feature works at the build, integration, product, visual, regression, and deployment levels before calling it done. Use after implementation, demo spikes, review/fix rounds, bug fixes, UI changes, agent workflows, integrations, or any task where passing automated tests is necessary but not enough to prove user-visible behavior.
+---
+
 # Verification Gates Skill
 
 ## Purpose

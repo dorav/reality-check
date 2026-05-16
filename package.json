@@ -1,10 +1,26 @@
 {
   "name": "@dorav/reality-check",
   "version": "0.1.0",
-  "private": true,
-  "description": "Reality Check: an agent skill plugin for product alignment, spikes, delivery, review triage, and verification gates.",
+  "private": false,
+  "description": "Reality Check: an agent skills collection for product alignment, spikes, delivery, review triage, and verification gates.",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dorav/reality-check.git"
+  },
+  "keywords": [
+    "agent-skills",
+    "skills",
+    "codex",
+    "ai-agents",
+    "planning",
+    "verification"
+  ],
+  "license": "UNLICENSED",
+  "scripts": {
+    "validate": "node scripts/validate-skills.mjs"
+  },
   "files": [
-    "SKILL.md",
     "README.md",
     "skills",
     "scripts"

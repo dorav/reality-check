@@ -1,3 +1,8 @@
+---
+name: established-pattern-delivery
+description: Execute full implementation once product direction, technical approach, and interface shape are sufficiently known. Use for low-uncertainty work that follows existing codebase patterns, or after spikes have reduced risk, to break delivery into focused tasks with tests, integration checks, UI checks, review handling, and verification gates.
+---
+
 # Established-Pattern Delivery Skill
 
 ## Purpose

@@ -1,3 +1,8 @@
+---
+name: reality-check
+description: Orchestrates product-aligned feature planning, technical spikes, interface design, implementation demos, review triage, and verification gates. Use when planning, implementing, redesigning, reviewing, rescuing, or verifying features where product intent, risky integrations, agent behavior, UI workflows, schemas, APIs, or repeated review/fix loops could drift from the user's intended outcome.
+---
+
 # Reality Check
 
 ## Purpose

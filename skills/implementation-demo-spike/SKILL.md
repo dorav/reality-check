@@ -1,3 +1,8 @@
+---
+name: implementation-demo-spike
+description: Prove an intended workflow can run through the major moving parts before investing in production hardening, broad tests, or polish. Use after product, technical, and interface direction are plausible but the integrated happy path still needs evidence through UI, API, persistence, SDKs, model behavior, workers, filesystem, or browser rendering.
+---
+
 # Implementation Demo Spike Skill
 
 ## Purpose

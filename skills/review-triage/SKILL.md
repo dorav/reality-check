@@ -1,3 +1,8 @@
+---
+name: review-triage
+description: Classify and address review comments, automated reviewer notes, bug-fix loops, and requested changes without blindly patching away from product intent. Use when PR feedback, failed tests, bug reports, repeated fixes, or reviewer suggestions may affect correctness, safety, integration, API shape, domain model, architecture, or user-visible behavior.
+---
+
 # Review Triage Skill
 
 ## Purpose

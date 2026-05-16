@@ -1,3 +1,8 @@
+---
+name: stop-and-replan
+description: Stop implementation or patching when evidence suggests the current direction is wrong, unstable, or hardening the wrong design. Use when the user rejects the result, tests pass but product inspection fails, core terms change, redesigns repeat, review loops keep cycling, schemas or interfaces shift unexpectedly, or verification contradicts confidence.
+---
+
 # Stop And Replan Skill
 
 ## Purpose

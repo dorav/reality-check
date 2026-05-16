@@ -35,6 +35,8 @@ For tiny, local, clearly established changes, use the established-pattern delive
 
 Maintain a lightweight running state throughout the work. Keep it concise; do not turn it into boilerplate.
 
+Keep this state privately while working, and surface it when the direction changes, a gate is reached, or the user needs to make a decision.
+
 Track:
 
 - Current phase
@@ -44,7 +46,11 @@ Track:
 - Decision needed
 - Next checkpoint
 
-Also maintain short ledgers when the work is non-trivial:
+Checkpoint example:
+
+> Phase: interface design. Assumption: invitations are persisted before emails are sent. Biggest risk: duplicate pending invites. Not proven yet: retry behavior after email failure. Decision needed: all-or-nothing versus partial success. Next checkpoint: approve API shape before implementation.
+
+Also maintain short ledgers when the work is non-trivial. Keep them short and update them only when new information changes the work:
 
 - Assumptions ledger: what is being assumed and why
 - Not-proven-yet ledger: what has not been verified yet
@@ -54,16 +60,16 @@ Also maintain short ledgers when the work is non-trivial:
 
 ## Intake Classification
 
-Before implementation, classify the work.
+Before implementation, classify the work yourself from the user's request and the codebase context.
 
-Ask which path applies:
+Use one of these paths:
 
 1. **Established-pattern delivery**: the feature follows an existing architecture and implementation pattern. The task is another instance of something the codebase already knows how to do.
 2. **Uncertain-feature path**: product behavior, technical approach, interface shape, safety model, or verification strategy is uncertain.
 3. **Review/fix path**: the current task is driven by review comments, failed tests, a bug report, or user dissatisfaction with a previous attempt.
 4. **Stop-and-replan path**: the current implementation may be solving the wrong problem.
 
-When unsure, choose the uncertain-feature path.
+Tell the user which path you chose in one short sentence. Ask the user to choose only when the difference is a product decision you cannot infer. When unsure, choose the uncertain-feature path.
 
 ## Paths
 
@@ -121,122 +127,19 @@ Route to these sub-skills:
 - `skills/verification-gates/SKILL.md`
 - `skills/stop-and-replan/SKILL.md`
 
-## Phase Gates
+## Gate Responsibilities
 
-### Product Direction Gate
+Each sub-skill owns its own detailed obligations and examples. Do not treat this root skill as the source of truth for phase details.
 
-Before meaningful implementation of uncertain work:
+Use the phase skills for these gates:
 
-- Draft one or more golden workflows from the user's request.
-- Define key terms that could be misunderstood.
-- Identify non-goals.
-- Ask the user to approve, edit, or reject the direction.
+- Product direction: draft golden workflows, clarify terms, identify non-goals, and give the user a chance to correct direction.
+- Technical risk: prove risky technology, integration, scaling, safety, or operational assumptions with bounded evidence.
+- Interface shape: show diagrams and code-level contracts before new APIs, schemas, domain concepts, source-of-truth models, or agent tools harden.
+- Implementation demo: demonstrate the approved workflow through the major moving parts before broad hardening and polish.
+- Full delivery: verify build, integration, product behavior, visual state, safety boundaries, and regressions before claiming completion.
 
-### Technical Risk Gate
-
-Before relying on a risky technology or integration:
-
-- Identify the largest technical unknowns.
-- Test or demonstrate the unknown parts directly.
-- Consider scaling, volatility, safety nets, security, operations, and deployment constraints.
-- State what is mocked, hard-coded, incomplete, or still unproven.
-
-### Interface Shape Gate
-
-Before implementing new APIs, persisted schema, domain entities, agent tools, UI contracts, or service boundaries:
-
-- Show the system shape in diagrams.
-- Show code-level contracts: types, function signatures, routes, request/response examples, event shapes, or schema sketches.
-- Classify which interfaces are public/stable versus internal/provisional.
-- Call out concepts that will be painful to change later.
-
-### Implementation Demo Gate
-
-Before full implementation of uncertain work:
-
-- Demonstrate the happy path through all major moving parts.
-- Include known non-trivial error paths when the decision matters to product or architecture.
-- Use e2e, curl, visual, or manual verification where applicable.
-- Pause for user inspection before hardening and full test investment.
-
-### Full Delivery Gate
-
-Before declaring the feature done:
-
-- Build verification passes.
-- Integration verification passes.
-- Product verification passes against the approved golden workflow.
-- Visual verification passes when UI or rendering changed.
-- Regression verification passes after review/fix rounds.
-- Remaining unverified items are explicitly stated.
-
-## Golden Workflow
-
-A golden workflow is a concrete example of the feature working from the user's perspective. It is not a rigid template and is not automatically a test, although it may later become one.
-
-The assistant should draft the golden workflow from the user's request. The user owns approval.
-
-A good golden workflow describes:
-
-- Starting state
-- User action
-- Expected result
-- Persistence or follow-up behavior if relevant
-- What would make the feature fail even if tests pass
-
-Generic example:
-
-> Feature request: Add bulk invite support for teams.
->
-> Golden workflow: A team admin opens the members page, uploads a CSV with five email addresses, sees a preview of valid and invalid rows, fixes one invalid row, sends the invites, and sees the invited users appear with pending status. If the admin refreshes the page, the pending invites are still visible. If the admin uploads the same CSV again, existing pending invites are not duplicated.
->
-> This fails if the system only accepts one invite at a time, hides invalid rows without explanation, creates duplicate invites, or appears to work in the UI but does not persist after refresh.
-
-## Spikes
-
-A spike is a bounded investigation or demo whose purpose is to reduce uncertainty before committing to full implementation.
-
-Spike types:
-
-- Product alignment spike: reduces uncertainty about what should be built.
-- Technical risk spike: reduces uncertainty about whether the technology, integration, safety model, scaling model, or operational approach can work.
-- Interface design spike: reduces uncertainty about contracts, domain concepts, and system boundaries. This phase should include diagrams and code-level contracts.
-- Implementation demo spike: reduces uncertainty about whether the desired happy path works through all major moving parts.
-
-A spike is not a stealth implementation. It may use mocks, hard-coded data, throwaway scripts, or partial implementations. It must end with clear evidence and remaining uncertainty.
-
-## Review And Fix Discipline
-
-Do not treat review comments as an automatic patch queue.
-
-Classify each review comment first:
-
-- Product blocker
-- Safety/security blocker
-- Correctness blocker
-- Integration blocker
-- API/domain concern
-- Maintainability/polish
-- Defer or won't fix
-
-If review feedback changes product behavior, source of truth, interface shape, or persisted/domain concepts, route back to the relevant spike instead of patching blindly.
-
-After any substantial review/fix round, rerun the product verification gate, not only targeted tests.
-
-## Stop-And-Replan Triggers
-
-Stop patching and replan when any of these happen:
-
-- The user says the result is not what they wanted.
-- The implementation passes tests but fails product inspection.
-- A core term changes meaning.
-- A second redesign happens in the same feature.
-- A third review/fix cycle happens without a clean product demo.
-- A new persisted schema, domain concept, source-of-truth model, or public interface appears unexpectedly.
-- Live/e2e/visual verification contradicts unit-test confidence.
-- The agent cannot explain how the current approach satisfies the golden workflow.
-
-Route to `skills/stop-and-replan/SKILL.md`.
+If a gate seems unnecessary, state the reason briefly and name the evidence that replaces it. Silent skipping is a process failure.
 
 ## Red Flags
 

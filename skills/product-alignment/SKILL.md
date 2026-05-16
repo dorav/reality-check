@@ -33,6 +33,14 @@ Before moving on, ensure these are clear enough for the user to inspect:
 
 Avoid rigid templates. Use only as much structure as needed to create alignment.
 
+Useful checkpoint shape:
+
+> User problem: Team admins need to invite many members without losing row-level errors.
+> Golden workflow: Admin uploads a CSV, previews valid and invalid rows, fixes one row, sends valid invites, and sees pending invites persist after refresh.
+> Key terms: "valid row" means email plus role; "duplicate" means already-member or already-pending.
+> Non-goals: No scheduled invites, role templates, or import history in this release.
+> Failure even if tests pass: The UI hides invalid rows, creates duplicate pending invites, or loses state after refresh.
+
 ## Golden Workflow
 
 Draft one or more golden workflows from the user's request. The assistant drafts; the user approves, edits, or rejects.
@@ -59,10 +67,10 @@ Identify product terms that need concrete definitions. For each term, ask what o
 
 Examples:
 
-- “Editable” can mean changing text, moving objects, changing settings, changing generated source, or changing persisted state.
-- “Resumable” can mean continuing a conversation, reading latest saved state, preserving manual edits, or replaying previous context.
-- “Safe” can mean permission-safe, data-safe, reversible, fail-closed, auditable, or isolated from secrets.
-- “Done” can mean implemented, tested, demoed, visually inspected, deployed, or accepted by the user.
+- "Editable" can mean changing text, moving objects, changing settings, changing generated source, or changing persisted state.
+- "Resumable" can mean continuing a conversation, reading latest saved state, preserving manual edits, or replaying previous context.
+- "Safe" can mean permission-safe, data-safe, reversible, fail-closed, auditable, or isolated from secrets.
+- "Done" can mean implemented, tested, demoed, visually inspected, deployed, or accepted by the user.
 
 ## UI Shape
 
@@ -77,7 +85,7 @@ Useful alignment tools:
 - Before/after examples
 - User stories with pass/fail criteria
 
-When a grill-me or adversarial-review skill is available, use it before accepting UI shape or major product direction.
+When `superpowers:brainstorming`, `grill-me`, or adversarial-review skill is available, use one of them before accepting UI shape or major product direction. Choose the one that best fits the user's installed skills and the shape of the work.
 
 ## Non-Goals
 
@@ -85,9 +93,9 @@ Explicitly name non-goals. Non-goals prevent agents and reviewers from expanding
 
 A non-goal should be specific enough to stop implementation drift.
 
-Weak: “Do not overbuild.”
+Weak: "Do not overbuild."
 
-Better: “Do not add role templates, scheduled invites, or CSV import history in this release.”
+Better: "Do not add role templates, scheduled invites, or CSV import history in this release."
 
 ## Exit Criteria
 

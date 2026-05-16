@@ -51,6 +51,14 @@ For each category:
 - Maintainability/polish: patch if low-risk and scoped; otherwise defer
 - Defer / won't fix: record the reason clearly
 
+Useful triage shape:
+
+| Comment | Category | Action | Verification |
+| --- | --- | --- | --- |
+| "Duplicates can be created on retry" | Correctness blocker | Patch idempotency in invite service | Regression test for retry plus DB state check |
+| "Rename `role` to `memberType`" | API/domain concern | Route to interface design before patching | Contract review with request/response examples |
+| "Move helper closer to caller" | Maintainability/polish | Patch if scoped after blockers | Targeted unit test still passes |
+
 ## Duplicate And Repeated Comments
 
 Collapse duplicate comments before patching.
@@ -75,6 +83,8 @@ When reporting back:
 - Mention if product/API direction changed.
 
 Do not claim a review note is fixed unless the relevant behavior has been verified.
+
+Report in the same shape: fixed, deferred/rejected, product/API changes, verification performed, and anything still not proven.
 
 ## Exit Criteria
 

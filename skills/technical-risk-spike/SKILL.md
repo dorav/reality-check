@@ -34,6 +34,16 @@ It should make clear:
 - Whether an interface design spike is needed next
 - What demo or evidence supports the conclusion
 
+Useful checkpoint shape:
+
+> Unknown tested: Whether the provider stream exposes stable message IDs and terminal errors.
+> Evidence: Ran `node scripts/spike-stream.mjs` against the local mock and captured start, delta, error, and done events.
+> Real: SDK event parsing and retry wrapper.
+> Mocked: Authentication and production network.
+> Finding: Message IDs are stable across retries, but terminal errors do not include row-level details.
+> Product impact: The UI can show retry status, but cannot promise exact failed row recovery yet.
+> Next route: Interface design for event shape; product alignment if row-level recovery is required.
+
 ## Technical Unknowns
 
 Ask what must be learned before implementation is safe.
@@ -139,6 +149,8 @@ Good spike demos are narrow:
 - A sandbox test proving disallowed file access fails closed
 
 Do not overinvest in full test coverage or polish during the spike. Use enough verification to trust the conclusion.
+
+If a risk area is skipped, state why. For example, "No scaling spike: first release caps uploads at 100 rows and uses the existing synchronous import path."
 
 ## Exit Criteria
 

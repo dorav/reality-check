@@ -47,6 +47,17 @@ Clarify:
 
 Do not bury uncertainty. Make it visible.
 
+Useful replan shape:
+
+> What happened: The UI demo passed, but refresh lost pending invites.
+> Wrong assumption: Pending invites could live in client state until emails finished sending.
+> Evidence: Browser refresh cleared the list; DB query showed no pending rows.
+> Reusable: CSV parsing tests and row validation.
+> Discard: Client-only pending state and tests that assume it.
+> Options: Persist before sending, or treat upload as a dry-run until the user confirms.
+> Recommended route: Return to interface design for source of truth, then implementation demo.
+> Decision needed: Should partial success create pending invites immediately?
+
 ## Common Replan Routes
 
 Route back to product alignment when:

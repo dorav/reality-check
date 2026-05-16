@@ -44,6 +44,15 @@ It should make clear:
 - Which non-trivial error paths are included
 - Which risks remain before production delivery
 
+Useful checkpoint shape:
+
+> Demoed workflow: Admin uploads a five-row CSV, previews invalid rows, fixes one row, sends invites, refreshes, and sees pending invites remain.
+> Evidence: Playwright walkthrough plus database query showing three pending invites and two invalid rows not persisted.
+> Real: UI form, API route, validation, database writes.
+> Mocked: Email delivery adapter.
+> Intentionally incomplete: Import history, full empty states, production observability.
+> Not proven yet: Provider failure after DB commit.
+
 ## Happy Path
 
 Demonstrate the core workflow from the user's perspective.
@@ -82,6 +91,8 @@ If error handling can reasonably wait, list it as not proven yet.
 Do not overinvest in full TDD or broad regression coverage during this spike.
 
 Use just enough tests or scripts to prove the demo and prevent immediate confusion. Full production tests belong in established-pattern delivery after the user accepts the direction.
+
+If an expected demo check is skipped, name why and what evidence is available instead. Do not let "demo" become a claim without inspectable proof.
 
 ## User Inspection Checkpoint
 

@@ -94,17 +94,3 @@ If you have network access and want to smoke-test the upstream installer:
 ```bash
 npx skills add . --list
 ```
-
-## Repository Helpers
-
-Initialize this folder as a Git repo:
-
-```bash
-./scripts/init-git-repo.sh
-```
-
-Create and push a GitHub repo with `gh`:
-
-```bash
-./scripts/create-github-repo.sh
-```

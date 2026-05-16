@@ -1,8 +1,10 @@
-import { readdirSync, readFileSync, statSync } from "node:fs";
+import { existsSync, readdirSync, readFileSync } from "node:fs";
 import path from "node:path";
 import process from "node:process";
+import matter from "gray-matter";
 
 const root = process.cwd();
+const skillsRoot = path.join(root, "skills");
 const namePattern = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 const errors = [];
 
@@ -31,36 +33,19 @@ function findSkillFiles(dir) {
 }
 
 function parseFrontmatter(filePath) {
-  const text = readFileSync(filePath, "utf8");
-  const normalized = text.replace(/\r\n/g, "\n");
+  const text = readFileSync(filePath, "utf8").replace(/^\uFEFF/, "");
 
-  if (!normalized.startsWith("---\n")) {
+  if (!matter.test(text)) {
     errors.push(`${relative(filePath)}: missing YAML frontmatter`);
     return null;
   }
 
-  const end = normalized.indexOf("\n---\n", 4);
-  if (end === -1) {
-    errors.push(`${relative(filePath)}: unterminated YAML frontmatter`);
+  try {
+    return matter(text).data;
+  } catch (error) {
+    errors.push(`${relative(filePath)}: invalid YAML frontmatter: ${error.message}`);
     return null;
   }
-
-  const fields = new Map();
-  const frontmatter = normalized.slice(4, end).split("\n");
-
-  for (const line of frontmatter) {
-    const match = line.match(/^([A-Za-z0-9_-]+):\s*(.*)$/);
-    if (!match) {
-      errors.push(`${relative(filePath)}: unsupported frontmatter line "${line}"`);
-      continue;
-    }
-
-    const key = match[1];
-    const value = match[2].trim().replace(/^["']|["']$/g, "");
-    fields.set(key, value);
-  }
-
-  return fields;
 }
 
 function relative(filePath) {
@@ -68,43 +53,29 @@ function relative(filePath) {
 }
 
 function expectedName(filePath) {
-  if (path.resolve(filePath) === path.join(root, "SKILL.md")) {
-    return path.basename(root);
-  }
-
   return path.basename(path.dirname(filePath));
 }
 
-const skillFiles = findSkillFiles(root).filter((filePath) => {
-  const parent = path.dirname(filePath);
-  if (parent === root) {
-    return true;
-  }
-
-  const parts = path.relative(root, parent).split(path.sep);
-  return parts[0] === "skills";
-});
+const skillFiles = existsSync(skillsRoot) ? findSkillFiles(skillsRoot) : [];
 
 if (skillFiles.length === 0) {
   errors.push("No SKILL.md files found");
 }
 
 for (const filePath of skillFiles) {
-  if (!statSync(filePath).isFile()) {
-    continue;
-  }
-
   const fields = parseFrontmatter(filePath);
   if (!fields) {
     continue;
   }
 
-  const name = fields.get("name");
-  const description = fields.get("description");
+  const name = fields.name;
+  const description = fields.description;
   const expected = expectedName(filePath);
 
   if (!name) {
     errors.push(`${relative(filePath)}: missing required name`);
+  } else if (typeof name !== "string") {
+    errors.push(`${relative(filePath)}: name must be a string`);
   } else {
     if (name.length > 64) {
       errors.push(`${relative(filePath)}: name exceeds 64 characters`);
@@ -121,6 +92,8 @@ for (const filePath of skillFiles) {
 
   if (!description) {
     errors.push(`${relative(filePath)}: missing required description`);
+  } else if (typeof description !== "string") {
+    errors.push(`${relative(filePath)}: description must be a string`);
   } else if (description.length > 1024) {
     errors.push(`${relative(filePath)}: description exceeds 1024 characters`);
   }

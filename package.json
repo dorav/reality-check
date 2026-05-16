@@ -17,13 +17,18 @@
     "verification"
   ],
   "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
   "scripts": {
     "verify": "node scripts/validate-skills.mjs"
   },
   "files": [
     "README.md",
-    "SKILL.md",
     "skills",
     "scripts"
-  ]
+  ],
+  "devDependencies": {
+    "gray-matter": "^4.0.3"
+  }
 }

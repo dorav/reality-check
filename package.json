@@ -2,7 +2,7 @@
   "name": "@dorav/reality-check",
   "version": "0.1.0",
   "private": false,
-  "description": "Reality Check: an agent skills collection for product alignment, spikes, delivery, review triage, and verification gates.",
+  "description": "Reality Check: a bundled agent skill collection for alignment, decision making, product direction, spikes, delivery, and review triage.",
   "type": "module",
   "repository": {
     "type": "git",
@@ -13,8 +13,8 @@
     "skills",
     "codex",
     "ai-agents",
-    "planning",
-    "verification"
+    "alignment",
+    "decision-making"
   ],
   "license": "MIT",
   "engines": {

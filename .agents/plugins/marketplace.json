@@ -1,0 +1,20 @@
+{
+  "name": "reality-check",
+  "interface": {
+    "displayName": "Reality Check"
+  },
+  "plugins": [
+    {
+      "name": "reality-check",
+      "source": {
+        "source": "local",
+        "path": "./plugins/reality-check"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 # Reality Check
 
-Reality Check is a multi-skill collection for AI coding agents. It helps agents plan, spike, implement, review, and verify features without drifting away from the user's intended product outcome.
+Reality Check is a bundled skill collection for AI coding agents. It helps agents align on product intent, expose decision points, spike uncertainty, implement, and review without drifting away from the user's intended product outcome.
 
 Core principle:
 
@@ -23,8 +23,7 @@ npx skills add dorav/reality-check --all
 Install a specific skill:
 
 ```bash
-npx skills add dorav/reality-check --skill using-reality-check
-npx skills add dorav/reality-check --skill verification-gates
+npx skills add dorav/reality-check --skill reality-check
 ```
 
 Install from a local checkout:
@@ -35,7 +34,7 @@ npx skills add .
 
 ## Available Skills
 
-### using-reality-check
+### reality-check
 
 Root entry skill and top-level orchestrator for deciding when and how to use Reality Check before planning, coding, patching review feedback, redesigning, debugging, or declaring work complete.
 
@@ -75,8 +74,8 @@ Stops patching when evidence shows the current approach is wrong, unstable, or h
 
 This repository follows the Agent Skills format used by `vercel-labs/skills`:
 
-- `skills/using-reality-check/SKILL.md` - root entry skill and top-level orchestrator
-- `skills/<skill-name>/SKILL.md` - independently discoverable phase skills
+- `skills/reality-check/SKILL.md` - root entry skill and top-level orchestrator
+- `skills/reality-check/<phase-name>/SKILL.md` - phase skills bundled under the Reality Check root
 - `scripts/` - optional repository helper scripts
 
 Every skill lives under `skills/` and includes YAML frontmatter with `name` and `description`.

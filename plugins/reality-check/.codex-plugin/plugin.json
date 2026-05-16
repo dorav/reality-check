@@ -1,0 +1,39 @@
+{
+  "name": "reality-check",
+  "version": "0.1.0",
+  "description": "Reality Check: an agent skills collection for alignment, decision making, product direction, spikes, delivery, and review triage.",
+  "author": {
+    "name": "dorav",
+    "url": "https://github.com/dorav"
+  },
+  "homepage": "https://github.com/dorav/reality-check",
+  "repository": "https://github.com/dorav/reality-check",
+  "license": "MIT",
+  "keywords": [
+    "agent-skills",
+    "codex",
+    "ai-agents",
+    "alignment",
+    "decision-making"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Reality Check",
+    "shortDescription": "Align on product intent and choose the right next move before coding.",
+    "longDescription": "Reality Check is a multi-skill collection for AI coding agents. It helps agents align on user outcomes, clarify decision points, reduce uncertainty with focused spikes, make interface contracts visible, prove direction through demos, deliver along established patterns, and triage review feedback without losing the original product intent.",
+    "developerName": "dorav",
+    "category": "Productivity",
+    "capabilities": [
+      "Alignment",
+      "Decision Making",
+      "Planning"
+    ],
+    "websiteURL": "https://github.com/dorav/reality-check",
+    "defaultPrompt": [
+      "Use Reality Check to align on this feature.",
+      "Help choose the right next decision point.",
+      "Spike the riskiest assumption before implementation."
+    ],
+    "brandColor": "#2563EB"
+  }
+}

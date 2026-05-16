@@ -1,9 +1,9 @@
 ---
-name: using-reality-check
-description: Use when starting feature, review, bug-fix, redesign, rescue, or verification work - decides whether Reality Check applies before coding, patching, or claiming completion.
+name: reality-check
+description: Use when starting feature, review, bug-fix, redesign, rescue, or completion work - aligns on product intent and decision points before coding or patching.
 ---
 
-# Using Reality Check
+# Reality Check
 
 ## Purpose
 
@@ -118,14 +118,14 @@ Flow:
 
 Route to these sub-skills:
 
-- `skills/product-alignment/SKILL.md`
-- `skills/technical-risk-spike/SKILL.md`
-- `skills/interface-design-spike/SKILL.md`
-- `skills/implementation-demo-spike/SKILL.md`
-- `skills/established-pattern-delivery/SKILL.md`
-- `skills/review-triage/SKILL.md`
-- `skills/verification-gates/SKILL.md`
-- `skills/stop-and-replan/SKILL.md`
+- `skills/reality-check/product-alignment/SKILL.md`
+- `skills/reality-check/technical-risk-spike/SKILL.md`
+- `skills/reality-check/interface-design-spike/SKILL.md`
+- `skills/reality-check/implementation-demo-spike/SKILL.md`
+- `skills/reality-check/established-pattern-delivery/SKILL.md`
+- `skills/reality-check/review-triage/SKILL.md`
+- `skills/reality-check/verification-gates/SKILL.md`
+- `skills/reality-check/stop-and-replan/SKILL.md`
 
 ## Gate Responsibilities
 

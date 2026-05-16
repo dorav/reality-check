@@ -18,7 +18,7 @@
   ],
   "license": "UNLICENSED",
   "scripts": {
-    "validate": "node scripts/validate-skills.mjs"
+    "verify": "node scripts/validate-skills.mjs"
   },
   "files": [
     "README.md",

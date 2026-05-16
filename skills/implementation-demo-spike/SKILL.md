@@ -1,6 +1,6 @@
 ---
 name: implementation-demo-spike
-description: Prove an intended workflow can run through the major moving parts before investing in production hardening, broad tests, or polish. Use after product, technical, and interface direction are plausible but the integrated happy path still needs evidence through UI, API, persistence, SDKs, model behavior, workers, filesystem, or browser rendering.
+description: Use before hardening, broad tests, or polish when the integrated happy path is still unproven - demonstrates the intended workflow through the major moving parts.
 ---
 
 # Implementation Demo Spike Skill

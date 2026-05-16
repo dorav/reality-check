@@ -1,13 +1,13 @@
 ---
-name: reality-check
-description: Orchestrates product-aligned feature planning, technical spikes, interface design, implementation demos, review triage, and verification gates. Use when planning, implementing, redesigning, reviewing, rescuing, or verifying features where product intent, risky integrations, agent behavior, UI workflows, schemas, APIs, or repeated review/fix loops could drift from the user's intended outcome.
+name: using-reality-check
+description: Use when starting feature, review, bug-fix, redesign, rescue, or verification work - decides whether Reality Check applies before coding, patching, or claiming completion.
 ---
 
-# Reality Check
+# Using Reality Check
 
 ## Purpose
 
-Use Reality Check to plan and execute product features without losing the user's intended outcome during implementation, review, hardening, or bug-fix loops.
+Use this skill to plan and execute product features without losing the user's intended outcome during implementation, review, hardening, or bug-fix loops.
 
 The core rule is:
 
@@ -15,15 +15,19 @@ The core rule is:
 
 Reality Check routes work through focused sub-skills. It is not a rigid report generator. Each phase has obligations: reduce the right uncertainty, expose assumptions, and create a useful checkpoint for the user.
 
-## When To Use
+## Start Here
+
+Before implementation, review fixes, redesigns, bug fixes, or completion claims, decide whether Reality Check applies.
 
 Use Reality Check when any of the following are true:
 
-- The user asks to plan, implement, redesign, review, or rescue a feature.
+- The user asks to plan, implement, redesign, review, rescue, debug, bug-fix, or verify a feature.
 - The feature introduces a new user workflow, domain concept, API, schema, agent behavior, or integration.
-- The implementation depends on unfamiliar technology, unstable SDK behavior, generated output, AI agents, permissions, external systems, or difficult verification.
+- Product behavior, UI flow, domain language, API shape, schema shape, agent behavior, or integration behavior could be misunderstood.
+- The implementation depends on unfamiliar technology, unstable SDK behavior, generated output, AI agents, permissions, external systems, persistence, deployment, or difficult verification.
 - Previous attempts produced too much review/fix churn or passed tests without satisfying the intended product behavior.
-- Review notes, bug fixes, or redesigns are starting to drive the work more than the original product goal.
+- Review notes, bug reports, failed tests, or redesigns are starting to drive the work more than the original product goal.
+- You are about to say the work is done and product-level evidence has not been checked.
 
 For tiny, local, clearly established changes, use the established-pattern delivery path directly.
 
@@ -234,6 +238,20 @@ Stop patching and replan when any of these happen:
 
 Route to `skills/stop-and-replan/SKILL.md`.
 
+## Red Flags
+
+Stop and route through Reality Check when you notice any of these thoughts:
+
+| Thought | Reality Check response |
+| --- | --- |
+| "This is just implementation." | Confirm the product direction and existing pattern first. |
+| "The review comment says exactly what to change." | Classify the comment before patching. |
+| "Tests pass, so it is done." | Run the relevant verification gates. |
+| "The UI compiles." | Check the actual workflow and visual state. |
+| "The API shape can be adjusted later." | Route interface changes through interface design. |
+| "The SDK probably works this way." | Spike the risky behavior directly. |
+| "One more patch should fix it." | Replan if repeated patches are not converging on the product outcome. |
+
 ## Working Style
 
 - Show partial findings early when they affect direction.
@@ -241,4 +259,4 @@ Route to `skills/stop-and-replan/SKILL.md`.
 - Ask for user approval at phase gates for uncertain work.
 - Keep full implementation work area-focused once the direction is known.
 - Do not overinvest in tests and polish before proving the intended outcome.
-- Do not declare success solely because automated tests pass.
+- Do not declare success solely because code was changed or automated tests passed.

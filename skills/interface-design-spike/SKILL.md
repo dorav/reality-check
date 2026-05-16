@@ -1,6 +1,6 @@
 ---
 name: interface-design-spike
-description: Align system shape before implementation by producing diagrams and code-level contracts for APIs, schemas, service boundaries, agent tools, event shapes, UI component contracts, domain concepts, and source-of-truth decisions. Use when work introduces or changes interfaces that will be painful to change later.
+description: Use before adding or changing APIs, schemas, service boundaries, agent tools, events, UI contracts, domain concepts, or source-of-truth decisions - makes system shape explicit before implementation.
 ---
 
 # Interface Design Spike Skill

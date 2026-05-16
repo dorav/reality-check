@@ -1,6 +1,6 @@
 ---
 name: technical-risk-spike
-description: Reduce technical uncertainty before full implementation with bounded spikes, evidence, mocked-versus-real distinctions, scaling questions, and remaining-risk summaries. Use when a feature depends on unfamiliar SDKs, frameworks, runtimes, deployments, external services, agents, generated output, permissions, streaming, filesystem access, security, reliability, or unclear operational behavior.
+description: Use before relying on unfamiliar or risky technology, SDKs, agents, permissions, integrations, deployment behavior, generated output, or operational assumptions - proves the risky parts with bounded evidence.
 ---
 
 # Technical Risk Spike Skill

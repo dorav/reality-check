@@ -1,6 +1,6 @@
 ---
 name: product-alignment
-description: Align product direction before implementation by drafting golden workflows, clarifying user outcomes, defining ambiguous terms, and identifying non-goals. Use for new or ambiguous features, UI flows, user-facing behavior, product acceptance criteria, or cases where code could compile and pass tests while missing what the user wanted.
+description: Use before implementing new or ambiguous product behavior, UI flows, user-facing workflows, or acceptance criteria - drafts golden workflows, clarifies terms, and identifies non-goals.
 ---
 
 # Product Alignment Skill

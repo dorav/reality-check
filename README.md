@@ -23,7 +23,7 @@ npx skills add dorav/reality-check --all
 Install a specific skill:
 
 ```bash
-npx skills add dorav/reality-check --skill reality-check
+npx skills add dorav/reality-check --skill using-reality-check
 npx skills add dorav/reality-check --skill verification-gates
 ```
 
@@ -35,11 +35,9 @@ npx skills add .
 
 ## Available Skills
 
-### reality-check
+### using-reality-check
 
-Top-level orchestrator for choosing the right path through product alignment, technical risk spikes, interface design, implementation demos, delivery, review triage, and verification.
-
-Use when planning, implementing, redesigning, reviewing, rescuing, or verifying a feature where the agent might otherwise optimize for code completion instead of the desired product behavior.
+Root entry skill and top-level orchestrator for deciding when and how to use Reality Check before planning, coding, patching review feedback, redesigning, debugging, or declaring work complete.
 
 ### product-alignment
 
@@ -77,18 +75,18 @@ Stops patching when evidence shows the current approach is wrong, unstable, or h
 
 This repository follows the Agent Skills format used by `vercel-labs/skills`:
 
-- `skills/reality-check/SKILL.md` - top-level orchestrator skill
+- `skills/using-reality-check/SKILL.md` - root entry skill and top-level orchestrator
 - `skills/<skill-name>/SKILL.md` - independently discoverable phase skills
 - `scripts/` - optional repository helper scripts
 
 Every skill lives under `skills/` and includes YAML frontmatter with `name` and `description`.
 
-## Validate
+## Verify
 
 Run the local validation check:
 
 ```bash
-npm run validate
+npm run verify
 ```
 
 If you have network access and want to smoke-test the upstream installer:

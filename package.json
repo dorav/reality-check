@@ -1,0 +1,12 @@
+{
+  "name": "@dorav/reality-check",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Reality Check: an agent skill plugin for product alignment, spikes, delivery, review triage, and verification gates.",
+  "files": [
+    "SKILL.md",
+    "README.md",
+    "skills",
+    "scripts"
+  ]
+}

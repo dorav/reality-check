@@ -44,6 +44,19 @@ Useful checkpoint shape:
 > Product impact: The UI can show retry status, but cannot promise exact failed row recovery yet.
 > Next route: Interface design for event shape; product alignment if row-level recovery is required.
 
+## Workflow
+
+Before building the spike, clarify what exactly needs to be learned.
+
+When `superpowers:brainstorming`, `grill-me`, or adversarial-review skill is available, use one of them before accepting the spike target. Choose the one that best fits the user's installed skills and the shape of the technical uncertainty.
+
+The result should be a narrow spike question, not a broad implementation plan. Name:
+
+- The risky assumption being tested
+- The smallest evidence that would answer it
+- What can be mocked, hard-coded, or skipped
+- What finding would change product direction, interface shape, or implementation approach
+
 ## Technical Unknowns
 
 Ask what must be learned before implementation is safe.
